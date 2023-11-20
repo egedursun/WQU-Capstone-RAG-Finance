@@ -1,0 +1,4 @@
+langchain~=0.0.338
+python-dotenv~=1.0.0
+requests~=2.31.0
+weaviate-client~=3.25.3
