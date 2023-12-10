@@ -50,9 +50,13 @@ class ChatMemory:
                 - get_technical_indicators: Get technical indicators for a given symbol.
                 - get_ticker_news: Get ticker news for a given symbol.
                 - get_dividends: Get dividends for a given symbol.
-                - get_arch_calculations: Get ARCH calculations for a given symbol.
-                - get_garch_calculations: Get GARCH calculations for a given symbol.
-                - get_descriptive_statistics: Get descriptive statistics for a given symbol.
+                - run_code: Run code in a sandboxed environment. (For GARCH/ARCH, descriptive statistics, etc.)
+                    - One important note here, if the user asked for a GARCH/ARCH calculation, you should
+                      first retrieve the data from the other tools, and then use that data to calculate GARCH/ARCH.
+                      Run code agent can only create a code snippet for a given query and run that. It doesn't have
+                        access to any API or any other tool. So, you should first retrieve the data from the other
+                        tools, and then use that data to calculate GARCH/ARCH, or any other calculation technique/
+                        methodology that requires an input data.
                 
                 You are also able to use knowledge-base search to find an answer to user's query, or check 
                 financial guides, books, investment portfolios, strategy definitions, etc.
@@ -64,8 +68,8 @@ class ChatMemory:
                 can't find an answer to the user's question, then you can check financial guides, books, investment
                 portfolios, strategy definitions, etc. If you can't find an answer to the user's question, then you
                 can answer the user's question by using your own knowledge. 
-                --- But NEVER use your own knowledge beforeusing the tools you have, if relevant.
-                --- Secondly, NEVER make up or halluciante information.
+                --- But NEVER use your own knowledge before using the tools you have, if relevant.
+                --- Secondly, NEVER make up or hallucinate information.
             """
 
         if welcome_prompt is None:

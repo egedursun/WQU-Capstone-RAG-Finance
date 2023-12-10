@@ -165,6 +165,10 @@ TOOL_DESC_RUN_CODE = """
       For example, libraries like: arch, numpy, pandas, matplotlib, etc.
     - The things you can use the code is primarily for financial engineering applications.
       - For example, ARCH, GARCH, and other financial engineering calculations, as well as Monte Carlo simulations.
+      
+    Important note:
+    - You don't have access to real-time information from any API, therefore whoever makes a call to you as a tool,
+    MUST send you the data that you will use to generate a code.
 """
 
 
