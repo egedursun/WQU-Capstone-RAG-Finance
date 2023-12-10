@@ -140,22 +140,31 @@ TOOL_DESC_DIVIDENDS = """
 
 
 ##########################################################################################################
-##################################### FUNCTION DESCRIPTIONS ##############################################
+##################################### RUN CODE DESCRIPTIONS ##############################################
 
 
-FUNC_DESC_GET_ARCH_CALCULATIONS = """
-    Get ARCH calculations for a given symbol.
-    TODO: DEVELOP HERE
-"""
-
-FUNC_DESC_GET_GARCH_CALCULATIONS = """
-    Get GARCH calculations for a given symbol.
-    TODO: DEVELOP HERE
-"""
-
-FUNC_DESC_GET_DESCRIPTIVE_STATISTICS = """
-    Get descriptive statistics for a given symbol.
-    TODO: DEVELOP HERE
+TOOL_DESC_RUN_CODE = """
+    Function Parameters / Inputs / Arguments:
+        - query : The user's query, which will be used to create a Python code snippet.
+        
+    *** Nothing else is needed to send as an argument to this function. ***
+    
+    **********************************************************************
+    
+    Run code for a given query. This function will understand the user's query and
+    return the result of the Python code snippet created from the user's query. The code snippet is ran 
+    through the Python interpreter, and the result is returned. Then, the agent is able to use the result
+    to answer the user's query.
+    
+    You can directly interpret the results returned from this function to provide
+    an answer to the user's query, by analyzing it according to the user's question.
+    
+    Details:
+    
+    - You can use Numpy and Pandas libraries in your code snippet. You need to import them in your code snippet.
+      For example, libraries like: arch, numpy, pandas, matplotlib, etc.
+    - The things you can use the code is primarily for financial engineering applications.
+      - For example, ARCH, GARCH, and other financial engineering calculations, as well as Monte Carlo simulations.
 """
 
 

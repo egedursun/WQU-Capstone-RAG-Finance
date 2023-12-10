@@ -14,7 +14,6 @@ class WeaviateClient:
         self.connection = weaviate.Client(
             url=url,
             auth_client_secret=weaviate.AuthApiKey(api_key=api_key),
-            # Replace w/ your Weaviate instance API key
             additional_headers={
                 "X-OpenAI-Api-Key": openai_api_key
             }
@@ -29,13 +28,19 @@ class WeaviateClient:
             return False
         return True
 
-    def add_object(self):
-        # TODO: Add object method
-        pass
+    def add_object(self, class_name, data):
+        try:
+            self.connection.data_object.create(data_object=data, class_name=class_name)
+        except Exception as exception:
+            print(exception)
+            return False
 
-    def delete_object(self):
-        # TODO: Delete object method
-        pass
+    def delete_object(self, uuid):
+        try:
+            self.connection.data_object.delete(uuid=uuid)
+        except Exception as exception:
+            print(exception)
+            return False
 
 
 if __name__ == "__main__":
