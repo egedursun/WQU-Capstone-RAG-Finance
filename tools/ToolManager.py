@@ -6,7 +6,6 @@ from langchain.tools import Tool
 from config import TOOL_DESC_FUNDAMENTAL_DATA, TOOL_DESC_TECHNICAL_DATA, TOOL_DESC_TECHNICAL_INDICATORS, \
     TOOL_DESC_TICKER_NEWS, TOOL_DESC_DIVIDENDS
 from functions.container.code_interpreter import run_code
-from knowledge.vector.WeaviateClient import WeaviateClient
 from tools.container.dividends import get_dividends
 from tools.container.fundamental_data import get_fundamental_data
 from tools.container.technical_data import get_technical_data
@@ -20,7 +19,7 @@ config = dotenv.dotenv_values()
 
 class ToolManager:
 
-    def __init__(self, vectorstore=WeaviateClient().connection):
+    def __init__(self):
         self.tools = [
 
             ####################################################################################################
@@ -44,7 +43,7 @@ class ToolManager:
                               streaming=True,
                               model_name="gpt-4-1106-preview",
                               temperature="0.5")
-        self.vectorstore = vectorstore
+        # self.vectorstore = vectorstore
         self.structured_agent = StructuredChatAgent.from_llm_and_tools(
             llm=self.llm,
             tools=self.tools)
