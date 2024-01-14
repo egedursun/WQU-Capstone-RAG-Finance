@@ -1,14 +1,13 @@
 from langchain.schema import ChatMessage
 
-MAX_CHAT_MEMORY = 2  # system + welcome + user + assistant
+MAX_CHAT_MEMORY = 4  # system + welcome + user + assistant
 
 
 class ChatMemory:
 
     def __init__(self, system_prompt=None, welcome_prompt=None):
         if system_prompt is None:
-            system_prompt = """
-            
+            system_prompt = """            
                 ***FIRST NOTE***: ALWAYS DELIVER YOUR ANSWER IN NATURAL LANGUAGE TO THE USER.
                                     SOME OF THE ANSWERS FROM OTHER AGENTS MIGHT ARRIVE TO YOU AS IN JSON
                                     FORMAT, OR LISTS, OR DICTS, OR TUPLES, OR ARRAYS, OR NUMPY ARRAYS.
@@ -70,6 +69,28 @@ class ChatMemory:
                 can answer the user's question by using your own knowledge. 
                 --- But NEVER use your own knowledge before using the tools you have, if relevant.
                 --- Secondly, NEVER make up or hallucinate information.
+                
+                - IMPORTANT NOTE:
+                --- The tool results will be delivered to you with a "system" role. You should not return the system
+                messages to the user directly. You should INTERPRET and UNDERSTAND these messages and return the 
+                user a natural language answer. For example, if the system message is:
+                
+                "The user asked for the fundamental data for AAPL. The price is $123.45 in date 2021-01-01. Then
+                the price fell to $122.34 in date 2021-02-01, one month later."
+                
+                You should return the user a natural language answer such as:
+                
+                "The price of AAPL was $123.45 in date 2021-01-01. Then, the price fell to $122.34 in date 2021-02-01,
+                which is probably because of the following reason: ..., ..." where "..." is the reason you inferred
+                from the system message and your own knowledge."
+                
+                - IMPORTANT NOTE:
+                
+                -- DO NOT ''PUT YOUR ANSWER IN MARKDOWN FORMAT''. YOU SHOULD RETURN YOUR ANSWER IN ''PLAIN TEXT''.
+                -- DO NOT PUT 'FORMULAS', 'MATH EQUATIONS', 'MATH SYMBOLS', 'MATH NOTATIONS', 'MATH FORMULAS', ETC.
+                -- DO NOT PUT 'LATEX FORMAT'. ALWAYS RETURN YOUR ANSWER IN 'PLAIN TEXT'.
+                
+                ---
             """
 
         if welcome_prompt is None:

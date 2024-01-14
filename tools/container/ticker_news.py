@@ -36,6 +36,9 @@ def get_ticker_news(query):
                                     - Here is the current date in case you might need it: {current_date_string}
     
                                     ---
+                                    
+                                    "NEVER TRY TO RETRIEVE THE DATA MORE THAN TWICE"
+                                    "ONLY ANSWER IN PLAIN TEXT"
     
                                     Based on the user's query, you need to query an API to provide the required stock news data to the
                                     other agent. The agent might need this information to make a decision about a stock, or something
@@ -45,8 +48,8 @@ def get_ticker_news(query):
                                     The API request parameters are:
                                     - ticker_symbol : The symbol of the ticker in the financial / stocks market (e.g. AAPL)
                                     - max_limit : The maximum number of news to get. (e.g. 5)
-                                                Please not that the maximum limit is 10, and further value will
-                                                still return 10 news.
+                                                Please note that the maximum limit is 5, and further value will
+                                                still return 5 news.
                                     - start_date : The start date of the news to get. (e.g. 2023-01-09)
                                     - end_date : The end date of the news to get. (e.g. 2023-01-09)
     
@@ -55,6 +58,14 @@ def get_ticker_news(query):
                                     Here is an example of what you must return:
     
                                     AAPL 5 2023-01-09 2023-01-09
+                                    
+                                    ---
+                                    
+                                    - IMPORTANT NOTE:
+                
+                                    -- DO NOT ''PUT YOUR ANSWER IN MARKDOWN FORMAT''. YOU SHOULD RETURN YOUR ANSWER IN ''PLAIN TEXT''.
+                                    -- DO NOT PUT 'FORMULAS', 'MATH EQUATIONS', 'MATH SYMBOLS', 'MATH NOTATIONS', 'MATH FORMULAS', ETC.
+                                    -- DO NOT PUT 'LATEX FORMAT'. ALWAYS RETURN YOUR ANSWER IN 'PLAIN TEXT'.
     
                                     ---
                                 """)]
@@ -78,8 +89,8 @@ def get_ticker_news(query):
     st.success("Internal Agent [Ticker News Agent] has queried the API successfully!")
 
     with st.expander("Reference Data [News API]", expanded=False):
-        st.warning("\n\n" + str(news) + "\n\n")
-        st.warning("Source: \n\n [1]  " + config["POLYGON_API_URL"] + "\n\n")
+        st.warning(str("\n\n" + str(news) + "\n\n"))
+        st.warning(str("Source: \n\n [1]  " + config["POLYGON_API_URL"] + "\n\n"))
 
     return news
 

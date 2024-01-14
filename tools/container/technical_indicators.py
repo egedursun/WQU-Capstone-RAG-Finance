@@ -31,6 +31,9 @@ def get_technical_indicators(query):
                         - {query}
     
                         ---
+                        
+                        "NEVER TRY TO RETRIEVE THE DATA MORE THAN TWICE"
+                        "ONLY ANSWER IN PLAIN TEXT"
     
                         Based on the user's query, you need to query an API to provide the required technical indicators to
                         other agent. The agent might need this information to make a decision about a stock, or something
@@ -69,6 +72,12 @@ def get_technical_indicators(query):
                         AAPL 10 day 12 26 9 14 close true 10
     
                         ---
+                        
+                        - IMPORTANT NOTE:
+                
+                        -- DO NOT ''PUT YOUR ANSWER IN MARKDOWN FORMAT''. YOU SHOULD RETURN YOUR ANSWER IN ''PLAIN TEXT''.
+                        -- DO NOT PUT 'FORMULAS', 'MATH EQUATIONS', 'MATH SYMBOLS', 'MATH NOTATIONS', 'MATH FORMULAS', ETC.
+                        -- DO NOT PUT 'LATEX FORMAT'. ALWAYS RETURN YOUR ANSWER IN 'PLAIN TEXT'.
                     """)]
         )
     st.success("Internal Agent [Technical Indicators Agent] has transformed your request successfully!")
@@ -102,8 +111,8 @@ def get_technical_indicators(query):
     st.success("Internal Agent [Technical Indicators Agent] has queried the API successfully!")
 
     with st.expander("Reference Data [Technical Indicators API]", expanded=False):
-        st.warning("\n\n" + str(indicators) + "\n\n")
-        st.warning("Source: \n\n [1]  " + config["POLYGON_API_URL"] + "\n\n")
+        st.warning(str("\n\n" + str(indicators) + "\n\n"))
+        st.warning(str("Source: \n\n [1]  " + config["POLYGON_API_URL"] + "\n\n"))
 
     return indicators
 

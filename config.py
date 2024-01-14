@@ -9,6 +9,8 @@ TOOL_DESC_FUNDAMENTAL_DATA = """
         
     *** Nothing else is needed to send as an argument to this function. ***
     **********************************************************************
+    
+    "NEVER TRY TO RETRIEVE THE DATA MORE THAN TWICE"
 
     Get fundamental data for a given symbol. This function will understand the user's query and
     return the fundamental data for the given symbol. The fundamental data response includes the following relevant
@@ -39,6 +41,10 @@ TOOL_DESC_FUNDAMENTAL_DATA = """
         
     You can directly interpret the results returned from this function to provide
     an answer to the user's query, by analyzing it according to the user's question.
+    
+    Important note:
+    "ALWAYS RETURN YOUR ANSWER IN PLAIN TEXT".
+
 """
 
 TOOL_DESC_TECHNICAL_DATA = """
@@ -47,6 +53,8 @@ TOOL_DESC_TECHNICAL_DATA = """
         
     *** Nothing else is needed to send as an argument to this function. ***
     **********************************************************************
+    
+    "NEVER TRY TO RETRIEVE THE DATA MORE THAN TWICE"
     
     Get technical data for a given symbol. This function will understand the user's query and
     return the technical data for the given symbol. The technical data response includes the following relevant
@@ -64,6 +72,9 @@ TOOL_DESC_TECHNICAL_DATA = """
     
     You can directly interpret the results returned from this function to provide
     an answer to the user's query, by analyzing it according to the user's question.
+    
+    Important note:
+    "ALWAYS RETURN YOUR ANSWER IN PLAIN TEXT".
 """
 
 TOOL_DESC_TECHNICAL_INDICATORS = """
@@ -72,6 +83,8 @@ TOOL_DESC_TECHNICAL_INDICATORS = """
         
     *** Nothing else is needed to send as an argument to this function. ***
     **********************************************************************
+    
+    "NEVER TRY TO RETRIEVE THE DATA MORE THAN TWICE"
     
     Get technical indicators for a given symbol. This function will understand the user's query and
     return the technical indicators for the given symbol. The technical indicators response includes the following
@@ -85,6 +98,9 @@ TOOL_DESC_TECHNICAL_INDICATORS = """
     These technical indicators are calculated in the function you will call, and you don't need to
     calculate them yourself. You can directly interpret the results returned from this function to provide
     an answer to the user's query, by analyzing it according to the user's question.
+    
+    Important note:
+    "ALWAYS RETURN YOUR ANSWER IN PLAIN TEXT".
 """
 
 TOOL_DESC_TICKER_NEWS = """
@@ -93,6 +109,8 @@ TOOL_DESC_TICKER_NEWS = """
         
     *** Nothing else is needed to send as an argument to this function. ***
     **********************************************************************
+    
+    "NEVER TRY TO RETRIEVE THE DATA MORE THAN TWICE"
     
     Get ticker news for a given symbol. This function will understand the user's query and
     return the ticker news for the given symbol. The ticker news response includes the following relevant
@@ -108,6 +126,9 @@ TOOL_DESC_TICKER_NEWS = """
     
     You can directly interpret the results returned from this function to provide
     an answer to the user's query, by analyzing it according to the user's question.
+    
+    Important note:
+    "ALWAYS RETURN YOUR ANSWER IN PLAIN TEXT".
 """
 
 TOOL_DESC_DIVIDENDS = """
@@ -116,6 +137,8 @@ TOOL_DESC_DIVIDENDS = """
         
     *** Nothing else is needed to send as an argument to this function. ***
     **********************************************************************
+    
+    "NEVER TRY TO RETRIEVE THE DATA MORE THAN TWICE"
     
     Get dividends for a given symbol. This function will understand the user's query and
     return the dividends for the given symbol. The dividends response includes the following relevant
@@ -136,6 +159,9 @@ TOOL_DESC_DIVIDENDS = """
     
     You can directly interpret the results returned from this function to provide
     an answer to the user's query, by analyzing it according to the user's question.
+    
+    Important note:
+    "ALWAYS RETURN YOUR ANSWER IN PLAIN TEXT".
 """
 
 
@@ -148,8 +174,9 @@ TOOL_DESC_RUN_CODE = """
         - query : The user's query, which will be used to create a Python code snippet.
         
     *** Nothing else is needed to send as an argument to this function. ***
-    
     **********************************************************************
+    
+    "NEVER TRY TO RETRIEVE THE DATA MORE THAN TWICE"
     
     Run code for a given query. This function will understand the user's query and
     return the result of the Python code snippet created from the user's query. The code snippet is ran 
@@ -169,6 +196,9 @@ TOOL_DESC_RUN_CODE = """
     Important note:
     - You don't have access to real-time information from any API, therefore whoever makes a call to you as a tool,
     MUST send you the data that you will use to generate a code.
+    
+    Important note:
+    "ALWAYS RETURN YOUR ANSWER IN PLAIN TEXT".
 """
 
 

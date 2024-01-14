@@ -37,6 +37,9 @@ def get_dividends(query):
                                 - Here is the current date in case you might need it: {current_date_string}
     
                                 ---
+                                
+                                "NEVER TRY TO RETRIEVE THE DATA MORE THAN TWICE"
+                                "ONLY ANSWER IN PLAIN TEXT"
     
                                 Based on the user's query, you need to query an API to provide the required dividends data to the
                                 other agent. The agent might need this information to make a decision about a stock, or something
@@ -57,8 +60,8 @@ def get_dividends(query):
                                         - LT: Long Term Dividend
                                         - ST: Short Term Dividend
                                 - max_limit : The maximum number of dividends to get. (e.g. 5)
-                                            Please not that the maximum limit is 10, and further value will
-                                            still return 10 dividends.
+                                            Please not that the maximum limit is 5, and further value will
+                                            still return 5 dividends.
     
                                 ---
     
@@ -67,6 +70,12 @@ def get_dividends(query):
                                 AAPL 4 CD 5
     
                                 ---
+                                
+                                - IMPORTANT NOTE:
+            
+                                -- DO NOT ''PUT YOUR ANSWER IN MARKDOWN FORMAT''. YOU SHOULD RETURN YOUR ANSWER IN ''PLAIN TEXT''.
+                                -- DO NOT PUT 'FORMULAS', 'MATH EQUATIONS', 'MATH SYMBOLS', 'MATH NOTATIONS', 'MATH FORMULAS', ETC.
+                                -- DO NOT PUT 'LATEX FORMAT'. ALWAYS RETURN YOUR ANSWER IN 'PLAIN TEXT'.
                             """)]
         )
     st.success("Internal Agent [Dividends Agent] has transformed your request successfully.")
@@ -88,8 +97,8 @@ def get_dividends(query):
     st.success("Internal Agent [Dividends Agent] has queried the API successfully.")
 
     with st.expander("Reference Data [Dividends API]", expanded=False):
-        st.warning("\n\n" + str(dividends_data) + "\n\n")
-        st.warning("Source: \n\n [1]  ", config["POLYGON_API_URL"] + "\n\n")
+        st.warning(str("\n\n" + str(dividends_data) + "\n\n"))
+        st.warning(str("Source: \n\n [1]  " + config["POLYGON_API_URL"] + "\n\n"))
 
     return dividends_data
 

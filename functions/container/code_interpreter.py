@@ -13,12 +13,17 @@ import arch
 import matplotlib.pyplot as plt
 
 import streamlit as st
+from pydantic.v1 import BaseModel
 
 dotenv.load_dotenv()
 config = dotenv.dotenv_values()
 
 
-@tool("run_code", return_direct=True)
+class CodeSchemaInputs(BaseModel):
+    code: str = ""
+
+
+@tool("run_code", return_direct=True, args_schema=CodeSchemaInputs)
 def run_code(query):
     """
     Run code in a sandboxed environment.
@@ -46,6 +51,8 @@ def run_code(query):
                                         - Here is the current date in case you might need it: {current_date_string}
 
                                         ---
+                                        
+                                        !!!!! THIS FUNCTION HAS A 'SINGLE INPUT, CONTAINING THE CODE ITSELF' !!!!!
 
                                         Based on the user's query, you need to run the code in a sandboxed environment.
                                         You should first create a code snippet that will be executed in the sandboxed
@@ -115,5 +122,5 @@ def run_code(query):
 
 if __name__ == "__main__":
     # test the interpreter
-    query = "Do a simple GARCH calculation"
+    query = "Do a simple GARCH calculation."
     print(run_code(query))

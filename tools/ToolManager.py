@@ -25,11 +25,16 @@ class ToolManager:
             ####################################################################################################
             # API TOOLS
             ####################################################################################################
-            Tool("get_fundamental_data", get_fundamental_data, TOOL_DESC_FUNDAMENTAL_DATA),
-            Tool("get_technical_data", get_technical_data, TOOL_DESC_TECHNICAL_DATA),
-            Tool("get_technical_indicators", get_technical_indicators, TOOL_DESC_TECHNICAL_INDICATORS),
-            Tool("get_ticker_news", get_ticker_news, TOOL_DESC_TICKER_NEWS),
-            Tool("get_dividends", get_dividends, TOOL_DESC_DIVIDENDS),
+            Tool("get_fundamental_data", get_fundamental_data, TOOL_DESC_FUNDAMENTAL_DATA,
+                 handle_parsing_errors=True),
+            Tool("get_technical_data", get_technical_data, TOOL_DESC_TECHNICAL_DATA,
+                 handle_parsing_errors=True),
+            Tool("get_technical_indicators", get_technical_indicators, TOOL_DESC_TECHNICAL_INDICATORS,
+                 handle_parsing_errors=True),
+            Tool("get_ticker_news", get_ticker_news, TOOL_DESC_TICKER_NEWS,
+                 handle_parsing_errors=True),
+            Tool("get_dividends", get_dividends, TOOL_DESC_DIVIDENDS,
+                 handle_parsing_errors=True),
             ####################################################################################################
             ####################################################################################################
             ####################################################################################################
@@ -41,13 +46,14 @@ class ToolManager:
         ]
         self.llm = ChatOpenAI(openai_api_key=config["OPENAI_API_KEY"],
                               streaming=True,
-                              model_name="gpt-4-1106-preview",
+                              model_name="gpt-4",
                               temperature="0.5")
         # self.vectorstore = vectorstore
         self.structured_agent = StructuredChatAgent.from_llm_and_tools(
             llm=self.llm,
-            tools=self.tools)
+            tools=self.tools,
+            handle_parsing_errors=True)
         self.chat_agent = AgentExecutor.from_agent_and_tools(
             agent=self.structured_agent,
-            tools=self.tools
-        )
+            tools=self.tools,
+            handle_parsing_errors=True)

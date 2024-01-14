@@ -37,6 +37,11 @@ def get_technical_data(query):
                     - Here is the current date in case you might need it: {current_date_string}
     
                     ---
+                    
+                     !!!!! THIS FUNCTION HAS A 'SINGLE INPUT, WHICH IS THE SYMBOL' !!!!!
+                    
+                    "NEVER TRY TO RETRIEVE THE DATA MORE THAN TWICE"
+                    "ONLY ANSWER IN PLAIN TEXT"
     
                     Based on the user's query, you need to query an API to provide the required technical data to the
                     other agent. The agent might need this information to make a decision about a stock, or something
@@ -57,9 +62,15 @@ def get_technical_data(query):
     
                     Here is an example of what you must return:
     
-                    AAPL day 2023-01-09 2023-01-09 true 10
+                    AAPL day 2023-01-09 2023-01-09 true 3
     
                     ---
+                    
+                    - IMPORTANT NOTE:
+
+                    -- DO NOT ''PUT YOUR ANSWER IN MARKDOWN FORMAT''. YOU SHOULD RETURN YOUR ANSWER IN ''PLAIN TEXT''.
+                    -- DO NOT PUT 'FORMULAS', 'MATH EQUATIONS', 'MATH SYMBOLS', 'MATH NOTATIONS', 'MATH FORMULAS', ETC.
+                    -- DO NOT PUT 'LATEX FORMAT'. ALWAYS RETURN YOUR ANSWER IN 'PLAIN TEXT'.
                 """)]
         )
     st.success("Internal Agent [Technical Data Agent] has transformed your request successfully!")
@@ -84,8 +95,8 @@ def get_technical_data(query):
     st.success("Internal Agent [Technical Data Agent] has queried the API successfully!")
 
     with st.expander("Reference Data [Technical Data API]", expanded=False):
-        st.warning("\n\n" + str(tickers) + "\n\n")
-        st.warning("Source: \n\n [1]  " + config["POLYGON_API_URL"] + "\n\n")
+        st.warning(str("\n\n" + str(tickers) + "\n\n"))
+        st.warning(str("Source: \n\n [1]  " + config["POLYGON_API_URL"] + "\n\n"))
 
     return tickers
 

@@ -37,6 +37,9 @@ def get_fundamental_data(query):
                             - Here is the current date in case you might need it: {current_date_string}
     
                             ---
+                            
+                            "NEVER TRY TO RETRIEVE THE DATA MORE THAN TWICE"
+                            "ONLY ANSWER IN PLAIN TEXT"
     
                             Based on the user's query, you need to query an API to provide the required fundamental data to the
                             other agent. The agent might need this information to make a decision about a stock, or something
@@ -47,17 +50,23 @@ def get_fundamental_data(query):
                             - ticker_symbol : The symbol of the ticker in the financial / stocks market (e.g. AAPL)
                             - timeframe : The period of time to get the fundamental data for, the options are:
                                     - annual, quarterly, ttm
-                            - limit : The maximum number of fundamental data to get. (e.g. 5) 
-                            Please not that the maximum limit is 10, and further value will 
-                            still return 10 fundamental data.
+                            - limit : The maximum number of fundamental data to get. (e.g. 1) 
+                            Please note that the maximum limit is 1, and further value will 
+                            still return 1 fundamental data.
     
                             ---
     
                             Here is an example of what you must return:
     
-                            AAPL annual 5
+                            AAPL annual 1
     
                             ---
+                            
+                            - IMPORTANT NOTE:
+        
+                            -- DO NOT ''PUT YOUR ANSWER IN MARKDOWN FORMAT''. YOU SHOULD RETURN YOUR ANSWER IN ''PLAIN TEXT''.
+                            -- DO NOT PUT 'FORMULAS', 'MATH EQUATIONS', 'MATH SYMBOLS', 'MATH NOTATIONS', 'MATH FORMULAS', ETC.
+                            -- DO NOT PUT 'LATEX FORMAT'. ALWAYS RETURN YOUR ANSWER IN 'PLAIN TEXT'.
                         """)]
         )
     st.success("Internal Agent [Fundamental Data Agent] has transformed your request successfully!")
@@ -77,10 +86,13 @@ def get_fundamental_data(query):
     st.success("Internal Agent [Fundamental Data Agent] has queried the Polygon API successfully!")
 
     with st.expander("Reference Data [Fundamental Data API]", expanded=False):
-        st.warning("\n\n" + str(fundamental_data) + "\n\n")
-        st.warning("Source: \n\n [1]  " + config["POLYGON_API_URL"] + "\n\n")
+        st.warning(str("\n\n" + str(fundamental_data) + "\n\n"))
+        st.warning(str("Source: \n\n [1]  " + config["POLYGON_API_URL"] + "\n\n"))
 
-    return fundamental_data
+    cutoff = -1
+    if len(str(fundamental_data)) > 4_000:
+        cutoff = 4_000
+    return str(fundamental_data)[0:cutoff]
 
 
 if __name__ == "__main__":
